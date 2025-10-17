@@ -9,6 +9,7 @@ const LONG_BREAK_TIME = 15 * 60; // 15 minutes in seconds
 
 const timerDisplay = document.getElementById('timer-display');
 const startBtn = document.getElementById('start-btn');
+const focusBtn = document.getElementById('focus-btn');
 const pauseBtn = document.getElementById('pause-btn');
 const resetBtn = document.getElementById('reset-btn');
 const shortBreakBtn = document.getElementById('short-break-btn');
@@ -23,6 +24,7 @@ function updateDisplay() {
 function startTimer() {
   if (isPaused) {
     isPaused = false;
+    clearInterval(timer);
     timer = setInterval(() => {
       if (timeLeft > 0) {
         timeLeft--;
@@ -42,14 +44,14 @@ function pauseTimer() {
 }
 
 function resetTimer() {
-  // Reset the timer to the current mode's time and stop it.
-  setMode(currentMode); 
-  pauseTimer(); 
+  pauseTimer();
+  setMode(currentMode);
 }
 
 function setMode(mode) {
+  pauseTimer();
   currentMode = mode;
-  pauseTimer(); 
+  
   switch (mode) {
     case 'focus': 
       timeLeft = FOCUS_TIME;
@@ -67,6 +69,7 @@ function setMode(mode) {
 setMode('focus');
 
 startBtn.addEventListener('click', startTimer);
+focusBtn.addEventListener('click', () => setMode('focus'));
 pauseBtn.addEventListener('click', pauseTimer);
 resetBtn.addEventListener('click', resetTimer);
 shortBreakBtn.addEventListener('click', () => setMode('short-break'));
