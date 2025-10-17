@@ -3,9 +3,9 @@ let timeLeft;
 let isPaused = true;
 let currentMode = 'focus';
 
-const FOCUS_TIME = 25 * 60;
-const SHORT_BREAK_TIME = 5 * 60;
-const LONG_BREAK_TIME = 15 * 60; 
+const FOCUS_TIME = 25 * 60; // 25 minutes in seconds
+const SHORT_BREAK_TIME = 5 * 60; // 5 minutes in seconds
+const LONG_BREAK_TIME = 15 * 60; // 15 minutes in seconds
 
 const timerDisplay = document.getElementById('timer-display');
 const startBtn = document.getElementById('start-btn');
@@ -42,6 +42,7 @@ function pauseTimer() {
 }
 
 function resetTimer() {
+  // Reset the timer to the current mode's time and stop it.
   setMode(currentMode); 
   pauseTimer(); 
 }
@@ -50,8 +51,8 @@ function setMode(mode) {
   currentMode = mode;
   pauseTimer(); 
   switch (mode) {
-    case 'reset':
-      timeLeft = RESET_TIME;
+    case 'focus': 
+      timeLeft = FOCUS_TIME;
       break;
     case 'short-break': 
       timeLeft = SHORT_BREAK_TIME;
