@@ -50,8 +50,8 @@ function setMode(mode) {
   currentMode = mode;
   pauseTimer(); 
   switch (mode) {
-    case 'focus':
-      timeLeft = FOCUS_TIME;
+    case 'reset':
+      timeLeft = RESET_TIME;
       break;
     case 'short-break': 
       timeLeft = SHORT_BREAK_TIME;
