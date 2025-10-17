@@ -24,6 +24,7 @@ body {
 }
 
 .controls button {
+  font-family: Quando, sans-seif;
   padding: 10px 20px;
   margin: 5px;
   border: none;
